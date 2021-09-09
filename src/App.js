@@ -1,25 +1,19 @@
+import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UsMap from './UsMap';
+import MapBoxMap from './MapboxMap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [isShown, setIsShown] = useState(true);
+
+	return (
+		<div className="app-container">
+			<div onClick={() => setIsShown(true)}>Show Map</div>
+			<MapBoxMap isShown={isShown} close={() => setIsShown(false)}></MapBoxMap>
+			<UsMap className="usmap"></UsMap>
+		</div>
+	);
+};
 
 export default App;
