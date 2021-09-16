@@ -1,0 +1,21 @@
+.map {
+	height: 100%;
+	width: 100%;
+}
+
+.button-container {
+	display: flex;
+	gap: 12px;
+	position: fixed;
+	right: 5%;
+	top: 5%;
+}
+
+.button {
+	cursor: pointer;
+	padding: 5px;
+}
+
+.button:hover {
+	background-color: blue;
+}

@@ -7,7 +7,7 @@ mapboxgl.accessToken =
 
 const MapBoxMap = ({ isShown, close }) => {
 	useEffect(() => {
-		const map = new mapboxgl.Map({
+		new mapboxgl.Map({
 			container: 'map', // container ID
 			style: 'mapbox://styles/markmoelleruva/cj5b7btrz17vn2rqx1ldub98b',
 			center: [-74.5, 40], // starting position [lng, lat]

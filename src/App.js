@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import UsMap from './UsMap';
+import SvgMap from './SvgMap';
 import MapBoxMap from './MapboxMap';
 
 const App = () => {
@@ -9,9 +9,8 @@ const App = () => {
 
 	return (
 		<div className="app-container">
-			<div onClick={() => setIsShown(true)}>Show Map</div>
 			<MapBoxMap isShown={isShown} close={() => setIsShown(false)}></MapBoxMap>
-			<UsMap className="usmap"></UsMap>
+			<SvgMap showMap={() => setIsShown(true)} className="usmap"></SvgMap>
 		</div>
 	);
 };

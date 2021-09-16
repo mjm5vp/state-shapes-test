@@ -2,14 +2,14 @@ import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson-client';
 import us from './us.json';
-import './UsMap.css';
+import './SvgMap.css';
 import * as stateData from './stateData';
 import MapBoxMap from './MapboxMap';
 
 const width = 975;
-const height = 975;
+const height = 610;
 
-const UsMap = () => {
+const SvgMap = ({ showMap }) => {
 	const [svg, setSvg] = useState();
 	const [states, setStates] = useState();
 	const [displayedImages, setDisplayedImages] = useState([]);
@@ -96,7 +96,7 @@ const UsMap = () => {
 		d3.select(gRef.current).attr('stroke-width', 1 / transform.k);
 	};
 
-	const zoom = d3.zoom().scaleExtent([1, 8]).on('zoom', zoomed);
+	const zoom = d3.zoom().scaleExtent([1, 300]).on('zoom', zoomed);
 
 	const renderStates = () => {
 		return topojson.feature(us, us.objects.states).features.map((state) => {
@@ -113,8 +113,14 @@ const UsMap = () => {
 
 	return (
 		<>
-			{/* <MapBoxMap className="fixed" /> */}
-			<div onClick={reset}>Reset</div>
+			<div className="button-container">
+				<div className="button" onClick={showMap}>
+					Show Map
+				</div>
+				<div onClick={reset} className="button" x={50} y={50}>
+					Reset
+				</div>
+			</div>
 			<svg className="map" ref={svgRef} viewBox={`0, 0, ${width}, ${height}`}>
 				<g ref={gRef}>
 					<g ref={statesRef}>{renderStates()}</g>
@@ -130,4 +136,4 @@ const UsMap = () => {
 	);
 };
 
-export default UsMap;
+export default SvgMap;
